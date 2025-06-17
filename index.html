@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nuestro Amor 💖</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="component.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="hearts">
+        <div class="heart" style="left:10%; animation-delay: 0s;"></div>
+        <div class="heart" style="left:30%; animation-delay: 2s;"></div>
+        <div class="heart" style="left:50%; animation-delay: 4s;"></div>
+        <div class="heart" style="left:70%; animation-delay: 1s;"></div>
+        <div class="heart" style="left:90%; animation-delay: 3s;"></div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-white" href="#">❤️ Nuestro Amor</a>
+        </div>
+    </nav>
+
+    <div id="mainCarousel" class="carousel slide mt-2 container" data-bs-ride="carousel">
+        <div class="carousel-inner rounded-4 shadow-lg">
+            <div class="carousel-item active">
+                <img src="assets/foto1.jpg" class="d-block w-100" alt="Foto 1">
+            </div>
+            <div class="carousel-item">
+                <img src="assets/foto2.jpg" class="d-block w-100" alt="Foto 2">
+            </div>
+            <div class="carousel-item">
+                <img src="tus-fotos/foto3.jpg" class="d-block w-100" alt="Foto 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <section class="container my-5">
+        <h2 class="text-center section-title">🌸 Nuestros Momentos Lindos</h2>
+        <div class="row mt-4">
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="memory-card p-3 text-center">
+                    <video class="rounded mb-3 img-fluid" src="assets/2.mp4" autoplay muted loop width="500px" height="500px"> </video>
+                    <h5>El dia en el que nos metieron miedo</h5>
+                    <p class="mb-0">me acuerdo que nos metimos al callejon a besarnos, y un mk salio JAJAJAJJAJA, FUE UN DIA GRACIOSO ❤️</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="memory-card p-3 text-center">
+                    <video class="rounded  mb-3 img-fluid" src="assets/ella.mp4" autoplay muted loop width="500px" height="0"> </video>
+                    <h5>Tu Risa Inolvidable</h5>
+                    <p>No hay música más linda que tu risa resonando en mi corazón.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="500">
+                <div class="memory-card p-3 text-center">
+                    <video class="rounded  mb-3 img-fluid" src="assets/Nuestro.mp4" autoplay muted loop width="500px" height="0"> </video>
+                    <h5>UUn momento especial</h5>
+                    <p>miradas, risas, nuestras caras MUY juntas... una noche que vive en mí por siempre, estaba tan nervioso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="text-center my-5">
+        <button class="btn btn-love" onclick="mostrarCarta()">💌 Lee una carta para ti</button>
+    </div>
+
+    <div class="love-letter" id="carta">
+        <h3 class="text-center text-danger">Mi amor...</h3>
+        <p>Desde que llegaste a mi vida, cada día ha sido una aventura mágica. Tus abrazos son mi hogar, tus palabras mi
+            melodía favorita y tu sonrisa... mi amanecer.</p>
+        <p>Gracias por cada momento compartido, por cada risa, por cada mirada que me devuelve la vida. Este regalo es
+            una pequeña muestra de cuánto te amo. ❤️</p>
+        <p>Con todo mi corazón,<br><strong>Jeronimo Arbelaez</strong></p>
+    </div>
+    <br>
+    <!-- Botón -->
+    <div class="text-center my-5">
+        <button id="celebrate-btn" class="btn btn-danger btn-lg shadow">
+            🎉 Celebrar Aniversario
+        </button>
+    </div>
+
+    <!-- Fuegos artificiales -->
+    <canvas id="fireworks-canvas" style="display: none; position: fixed; top: 0; left: 0; z-index: 10;"></canvas>
+
+    <!-- Mensaje de amor -->
+    <div id="love-message">
+        ❤️ TE AMO DEMASIADO MI VIDA, ESPERO TE HAYA GUSTADO ❤️
+    </div>
+    <br>
+    <footer>
+        <p>Con todo mi amor para ti 💕 — Jeronimo Arbelaez Alvarez</p>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        function mostrarCarta() {
+            const carta = document.getElementById("carta");
+            carta.style.display = "block";
+            carta.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+    <script>
+        const canvas = document.getElementById('fireworks-canvas');
+        const ctx = canvas.getContext('2d');
+        const btn = document.getElementById('celebrate-btn');
+        const message = document.getElementById('love-message');
+        let W = window.innerWidth;
+        let H = window.innerHeight;
+        canvas.width = W;
+        canvas.height = H;
+
+        window.addEventListener('resize', () => {
+            W = window.innerWidth;
+            H = window.innerHeight;
+            canvas.width = W;
+            canvas.height = H;
+        });
+
+        const particles = [];
+        let fireworksActive = false;
+        let intervalId = null;
+
+        function random(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        function createFirework(x, y) {
+            const colors = ['#ff4b5c', '#ffbd69', '#ffffff', '#85f4ff', '#ffc0cb'];
+            const count = 40;
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x,
+                    y,
+                    radius: 2,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    angle: Math.random() * 2 * Math.PI,
+                    speed: random(1.5, 3.5),
+                    alpha: 1,
+                    decay: random(0.01, 0.015)
+                });
+            }
+        }
+
+        function animate() {
+            if (!fireworksActive) return;
+
+            ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+            ctx.fillRect(0, 0, W, H);
+
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.x += Math.cos(p.angle) * p.speed;
+                p.y += Math.sin(p.angle) * p.speed + 0.4;
+                p.alpha -= p.decay;
+                if (p.alpha <= 0) {
+                    particles.splice(i, 1);
+                    continue;
+                }
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
+                ctx.fillStyle = `rgba(${hexToRgb(p.color)},${p.alpha})`;
+                ctx.fill();
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        function hexToRgb(hex) {
+            const bigint = parseInt(hex.replace('#', ''), 16);
+            const r = (bigint >> 16) & 255;
+            const g = (bigint >> 8) & 255;
+            const b = bigint & 255;
+            return `${r},${g},${b}`;
+        }
+
+        btn.addEventListener('click', () => {
+            canvas.style.display = 'block';
+            fireworksActive = true;
+            message.classList.add('active');
+            animate();
+
+            intervalId = setInterval(() => {
+                createFirework(random(100, W - 100), random(50, H / 2));
+            }, 2000);
+
+            setTimeout(() => {
+                fireworksActive = false;
+                clearInterval(intervalId);
+                canvas.style.display = 'none';
+                message.classList.remove('active');
+            }, 10000);
+        });
+    </script>
+
+</body>
+
+</html>
